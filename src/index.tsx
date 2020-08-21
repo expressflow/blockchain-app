@@ -1,25 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { create } from 'domain';
 
 const theme = createMuiTheme({
   palette: {
-      type: "dark",
-      primary: {
-          main: "#18ffff"
-      },
-      secondary: {
-          main: "#fff"
-      }
+    type: "dark",
+    primary: {
+      main: "#18ffff"
+    },
+    secondary: {
+      main: "#fff"
+    }
   }
 });
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemeProvider theme={theme}>
-      <App />
+      <Router history={history}>
+        <App />
+      </Router>
     </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
